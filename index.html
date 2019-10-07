@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="momentum.js" type="text/javascript"></script>
-		<title>Helene's Momentum</title>
+		<title>Momentum</title>
 	</head>
 
 	<body>
@@ -21,37 +21,36 @@
 
 		<div class="toggle-off">
 			<form id="links-block">
-<!-- 				<input type="checkbox" name="links" id="links-checkbox"/> 
- -->				<label class="links" id="links" for="links-checkbox" >Links</label>
+				<div class="links" id="links" for="links-checkbox" >Links</div>
 				<div id="links-popup-window">
 					<ul id="links-list">
 					  	<li>
-					  		<a id="chrometab" href="#"><i id="chrome" class="icon icon-chrome icon-link"></i> Chrome tab
+					  		<a id="chrometab" href="#">
+									<i id="chrome" class="icon icon-chrome icon-link"></i> Chrome tab
 					  		</a>
 					  	</li>
 					  	<li>
-					  		<a id="apps" href="#"><i id="th" class="icon icon-apps icon-link"></i> Apps
+					  		<a id="apps" href="#">
+									<i id="th" class="icon icon-apps icon-link"></i> Apps
 					  		</a>
 					  	</li>
 					  	<li>
-					  		<form>
-										<input type="text" placeholder="New Link" autocomplete="off" id="newlink"/>		
-								</form>
+								<input type="text" placeholder="New Link" autocomplete="off" id="newlink"/>
 							</li>
 					</ul>
-				</div>				
+				</div>
 			</form>
 
 			<div class="meteo-wrapper">
 				<form id="meteo-block">
-					<label id="meteo" class="meteo-btn" for="meteo-checkbox">				
+					<label id="meteo" class="meteo-btn" for="meteo-checkbox">
 						<span id="temperature"  class="meteo-btn">
 								<i class="icon icon-sun icon-link meteo-btn"></i> 17˚
 						</span>
 						<span id="location"  class="meteo-btn">MELBOURNE
 						</span>
 					</label>
-					
+
 					<div id="meteo-popup-window">
 						<div id="meteo-city">Melbourne</div>
 						<div id="meteo-state">Breezy</div>
@@ -89,12 +88,10 @@
 							</span>
 						</div>
 					</div>
-				</form>				
+				</form>
 			</div>
 
-
-
-			<div id="middle-block"> 
+			<div id="middle-block">
 				<div id="time">
 					<span id="hours">19</span><span class="two-points">:</span><span id="minutes">59</span>
 				</div>
@@ -104,31 +101,29 @@
 				<div id="main-focus-wraper">
 					<form method="post">
 				    	<label for="main-focus">What is your main focus today?</label>
-				    	</br> <input type="text" autocomplete="off" id="main-focus"/>		
-					</form>					
+				    	</br> <input type="text" autocomplete="off" id="main-focus"/>
+					</form>
 				</div>
 			</div>
 
 			<div id="quote-block">
-				<div class="quote">"Buy fries to the one you love, that's true love"
-				</div>
+				<div class="quote">"Wherever life plants you, bloom with grace."</div>
 				<div class="quote-author">
-					<span>Incognito</span>
+					<span>French Proverbe</span>
 					<span>
 						<i class="icon icon-like-love-streamline icon-link"></i>
 						<i class="icon icon-twitter icon-link"></i>
 					</span>
 				</div>
-			</div>			
+			</div>
 		</div>
 
 		<div class="settings-geolocation-wrapper">
 			<div>
 				<form class="toggle-off" id="settings-block">
-<!-- 					<input type="checkbox" name="settings-checkbox" id="settings-checkbox">
- -->					<label id="settings" for="settings-checkbox" class="icon icon-settings"></label>
+					<label id="settings" for="settings-checkbox" class="icon icon-settings"></label>
 					<div class="popup3" id="settings-popup-window"></div>
-				</form>		
+				</form>
 			</div>
 			<div id="geolocation-block">
 				<div class="geolocation">Glen Waverley, VIC, Australia
@@ -138,7 +133,7 @@
 					<span id="author-heart-icon">
 						<i class="icon icon-like-love-streamline icon-link"></i>
 					</span>
-				</div>		
+				</div>
 			</div>
 		</div>
 	</body>
