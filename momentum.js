@@ -2,6 +2,7 @@
 function timeupdateHours () {
 	let today = new Date()
 	let hours = today.getHours()<10 ? "0" + today.getHours() : today.getHours()
+	greetingMessage(hours)
 	return hours
 }
 
@@ -14,6 +15,20 @@ function timeupdateMinutes () {
 function showtime () {
 	document.getElementById("hours").innerHTML = timeupdateHours()
 	document.getElementById("minutes").innerHTML = timeupdateMinutes()
+}
+//===================================================================================//
+
+//================================== clock ==========================================//
+function greetingMessage (currentHour) {
+	if (currentHour >= 5 && currentHour < 12) {
+		$(".greeting").html('Good Morning')
+	}
+	if (currentHour > 12) {
+		$(".greeting").html('Good Afternoon')
+	}
+	if (currentHour >= 18 || currentHour < 5) {
+		$(".greeting").html('Good Evening')
+	}
 }
 //===================================================================================//
 
@@ -114,14 +129,12 @@ function getWeather (loc) {
 //===================================================================================//
 
 //=============================== Get quote of the day ===============================//
-// // Get quote of the day from https://quotes.rest/qod .
+// Get quote of the day from https://quotes.rest/qod .
 function getQuoteOfTheDay () {
 	$.get('https://quotes.rest/qod', function(test) {
 		let quote = test.contents.quotes[0].quote
 		let author = test.contents.quotes[0].author
-		console.log(quote, author)
 		if (quote) {
-			console.log('test')
 			$(".quote").html("“" + quote + "”");
 			$(".author").html(author);
 		}
@@ -142,4 +155,5 @@ $(document).ready(function($) {
 window.onload = function () {
 	showtime()
 	setInterval(showtime, 60000)
+	greetingMessage()
 }
