@@ -17,33 +17,6 @@ function showtime () {
 }
 //===================================================================================//
 
-//========================== change background image ================================//
-let backgroundImages = []
-let currentImageIndex = 0
-
-function initBackgroundRotation () {
-	backgroundImages = document.getElementsByClassName('background-images')[0].children
-	currentImageIndex = backgroundImages.length - 1
-	backgroundImages[currentImageIndex].className = 'active'
-}
-
-function changeBackground () {
-	let currentImage = backgroundImages[currentImageIndex]
-
-	// Start fading out the current image.
-	currentImage.className = 'active fade-out'
-
-	// Next image becomes active.
-	currentImageIndex = (backgroundImages.length + (currentImageIndex - 1)) % backgroundImages.length
-	backgroundImages[currentImageIndex].className = 'active'
-
-	// After 700ms, the current image loses the active class & the next image becomes active.
-	setTimeout(function(){
-		currentImage.className = ''
-	}, 8000)
-}
-//===================================================================================//
-
 //======================close popup when clicked outside ============================//
 let isLinksPopupOpen = false
 
@@ -169,6 +142,4 @@ $(document).ready(function($) {
 window.onload = function () {
 	showtime()
 	setInterval(showtime, 60000)
-	initBackgroundRotation()
-	setInterval(changeBackground, 8000)
 }
