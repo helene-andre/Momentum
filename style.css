@@ -36,7 +36,7 @@ a:hover {opacity: 1;}
 /*============================= background images ===========================*/
 .background-images {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	position: fixed;
   left: 0px;
   top: 0px;
@@ -44,6 +44,8 @@ a:hover {opacity: 1;}
 }
 
 .background-images img {
+	width: auto;
+	height: 100%;
 	transition: opacity 5s ease-in-out;
 	opacity: 1;
 	position: absolute;
@@ -197,6 +199,28 @@ a,i {
   right: 0%;
 }
 
+.meteo-btn {
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+}
+
+.meteo__item-top {
+	display: flex;
+	justify-content: space-around;
+}
+
+.meteo__item-top .temperature__current	{
+	vertical-align: baseline;
+	line-height: 44px;
+	font-size: 19px;
+}
+
+.meteo__item-bottom	{
+	text-align: center;
+	font-size: 15px;
+}
+
 #temperature {
 	font-size: 1.9em;
 	opacity: 1;
@@ -232,8 +256,11 @@ a,i {
 	font-size: 1.3em;
 	z-index: 50;
 	display: none;
-  transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	text-align: center;
 }
+
+#meteo-popup-window .temperature__feels-like {opacity: 0.5;}
 
 #meteo-popup-window:before {
   content: "";
@@ -260,37 +287,6 @@ a,i {
 	font-style: normal;
 	color: white;
 	opacity: 1;
-}
-
-.meteo-5-days {
-	height: 50px;
-	width: 360px;
-	display: inline-block;
-	border-top: solid 1px rgba(208,208,208,0.3);
-	margin-top: 25px;
-	font-size: 0.7em;
-	opacity: 0.7;
-}
-
-.day {
-	margin-top: 10px;
-	text-align: center;
-	padding: 5px;
-	border: solid 1px transparent;
-	transition: all 0.3s ease-in-out;
-}
-
-.day:hover {
-	background-color: rgba(255,255,255,.3);
-	border: solid 1px transparent;
-	border-radius: 3px;
-}
-
-.temp-icon {
-	font-style: normal;
-	opacity: 1;
-	color: white;
-	font-size: 1.7em;
 }
 /*==========================================================================*/
 
@@ -458,7 +454,7 @@ input[type="text"] {
 }
 
 .quote {
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-weight: 300;
 	position: relative;
 	top: 62%;
@@ -471,7 +467,7 @@ input[type="text"] {
 	opacity: 0;
 	position: relative;
 	font-family: roboto,arial;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	font-weight: 300;
 	top: 39%;
 	text-align: center;
@@ -480,10 +476,10 @@ input[type="text"] {
 
 #quote-block:hover .quote-author {
 	opacity: 0.7;
-	transform: translateY(45%);
+	transform: translateY(-75%);
 }
 
-#quote-block:hover .quote {transform: translateY(-50%);}
+#quote-block:hover .quote {transform: translateY(-66%);}
 
 span,i {
 	display: inline-block;

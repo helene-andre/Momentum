@@ -12,7 +12,6 @@
 	</head>
 
 	<body>
-
 		<div class="background-images">
 			<img src="image/backgroundImage1.jpg">
 			<img src="image/backgroundImage2.jpg">
@@ -42,58 +41,30 @@
 			</form>
 
 			<div class="meteo-wrapper">
-				<form id="meteo-block">
-					<label id="meteo" class="meteo-btn" for="meteo-checkbox">
-						<span id="temperature"  class="meteo-btn">
-								<i class="icon icon-sun icon-link meteo-btn"></i> 17˚
-						</span>
-						<span id="location"  class="meteo-btn">MELBOURNE
-						</span>
-					</label>
+				<div id="meteo-block">
+					<div class="meteo meteo-btn">
+						<div class="meteo__item-top">
+							<span><img class="weather-icon meteo-btn__item" width="44"/></span>
+							<span class="temperature__current meteo-btn__item"></span>
+						</div>
+						<div class="meteo__item-bottom location__city meteo-btn__item"></div>
+					</div>
 
 					<div id="meteo-popup-window">
-						<div id="meteo-city">Melbourne</div>
-						<div id="meteo-state">Breezy</div>
-						<div><i class="icon icon-sun" id="meteo-icon"> 12˚</i>
-						</div>
-						<div class="meteo-5-days">
-							<span class="day">MON<br/>
-								<span class="temp-icon"><i class="icon icon-sun"></i></span>
-								<span class="temp-max"> 12˚</span>
-								<span class="temp-min"> 10˚</span>
-							</span>
-
-							<span class="day">TUE<br/>
-								<span class="temp-icon"><i class="icon icon-sun"></i></span>
-								<span class="temp-max"> 12˚</span>
-								<span class="temp-min"> 10˚</span>
-							</span>
-
-							<span class="day">WED<br/>
-								<span class="temp-icon"><i class="icon icon-sun"></i></span>
-								<span class="temp-max"> 12˚</span>
-								<span class="temp-min"> 10˚</span>
-							</span>
-
-							<span class="day">THU<br/>
-								<span class="temp-icon"><i class="icon icon-sun"></i></span>
-								<span class="temp-max"> 12˚</span>
-								<span class="temp-min"> 10˚</span>
-							</span>
-
-							<span class="day">FRI<br/>
-								<span class="temp-icon"><i class="icon icon-sun"></i></span>
-								<span class="temp-max"> 12˚</span>
-								<span class="temp-min"> 10˚</span>
-							</span>
+						<div id="meteo-city" class="location__city"></div>
+						<div id="meteo-state"><span class="description__text">...</span></div>
+						<div>
+							<i class="icon icon-sun" id="meteo-icon"></i>
+							<span class="temperature__current">...</span>
+							<span class="temperature__feels-like" title="feels like">...</span>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 
 			<div id="middle-block">
 				<div id="time">
-					<span id="hours">19</span><span class="two-points">:</span><span id="minutes">59</span>
+					<span id="hours">..</span><span class="two-points">:</span><span id="minutes">..</span>
 				</div>
 
 				<div id="greeting">Good afternoon, Helene.</div>
@@ -107,9 +78,9 @@
 			</div>
 
 			<div id="quote-block">
-				<div class="quote">"Wherever life plants you, bloom with grace."</div>
+				<div class="quote">...</div>
 				<div class="quote-author">
-					<span>French Proverbe</span>
+					<span class="author"></span>
 					<span>
 						<i class="icon icon-like-love-streamline icon-link"></i>
 						<i class="icon icon-twitter icon-link"></i>
@@ -126,8 +97,13 @@
 				</form>
 			</div>
 			<div id="geolocation-block">
-				<div class="geolocation">Glen Waverley, VIC, Australia
-				</div>
+					<div class="geolocation">
+						<span class="location__city"></span>
+						<span>, </span>
+						<span class="location__country"></span>
+					</div>
+
+
 				<div class="geolocation-author">
 					<a href="#">Photo By Incognito</a>
 					<span id="author-heart-icon">
