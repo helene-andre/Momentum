@@ -45,15 +45,13 @@ a:hover {opacity: 1;}
 
 .background-images img {
 	width: auto;
-	height: 100%;
-	transition: opacity 5s ease-in-out;
-	opacity: 1;
+	min-width: 100%;
+	height: 100vh;
 	position: absolute;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
-	z-index: 0;
 }
 
 .background-images .fade-out {opacity: 0;}
@@ -178,7 +176,8 @@ a,i {
   font-size: 17px;
   text-align: left;
   position: relative;
-  top: 5px;
+	top: 5px;
+	width: 80%;
 }
 
 #links-list {
@@ -314,16 +313,9 @@ a,i {
 .two-points {transition: 0.3s ease-in-out;}
 
 .invisible {opacity: 0;}
-
-.greeting {
-	width: 600px;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	font-size: 4em;
-  padding-bottom: 8%;
-}
 /*=========================================================================*/
+
+
 
 /*============================== settings-popup ===========================*/
 .settings-geolocation-wrapper {
@@ -482,16 +474,6 @@ span,i {
 
 @media screen and (max-height: 720px) {
 	#time {font-size: 12em;}
-
-	#greeting {
-		font-size: 3.5em;
-  	padding-bottom: 6%;
-	}
-
-	input[type="text"] {
-		font-size: 1.2em;
-		width: 388px;
-	}
 }
 
 @media screen and (max-height: 620px) {
@@ -501,16 +483,6 @@ span,i {
 	}
 
 	#time {font-size: 11em;}
-
-	#greeting {
-		font-size: 3.3em;
-  	padding-bottom: 3%;
-	}
-
-	input[type="text"] {
-		font-size: 1em;
-		width: 388px;
-	}
 }
 
 @media screen and (max-height: 550px) {
@@ -521,16 +493,6 @@ span,i {
 
 	#time {font-size: 10em;}
 
-	#greeting {
-		font-size: 3em;
-  	padding-bottom: 1%;
-	}
-
-	input[type="text"] {
-		font-size: 1em;
-		width: 358px;
-	}
-
 	#location {top: 5.5%;}
 }
 
@@ -538,22 +500,7 @@ span,i {
 	#time {
 	  opacity: 0;
 	  z-index: -60;
-  }
-
-  #greeting {
-		width: 600px;
-		transform: translateX(-50%);
-		font-size: 3em;
-		top: -23%;
 	}
-
-	#main-focus-wraper {
-	  font-size: 2.75em;
-		color: white;
-		position: fixed;
-		top: 34%;
-	}
-
 	.quote {
 		font-size: 1.5em;
 	  font-weight: 300;
@@ -580,27 +527,14 @@ span,i {
 		bottom: 4.2%;
 	}
 
-	input[type="text"] {
-		font-size: 1em;
-		width: 338px;
-	}
-
 	#location {top: 5.5%;}
 }
 
 @media screen and (max-height: 330px) {
-  #greeting {top: -33%;}
-
-	#main-focus-wraper {top: 24%;}
-
 	#location {top: 5.5%;}
 }
 
 @media screen and (max-height: 270px) {
-  #greeting {top: -42%;}
-
-	#main-focus-wraper {top: 10%;}
-
 	#location {top: 5.5%;}
 }
 
@@ -629,27 +563,10 @@ span,i {
 }
 
 @media screen and (max-width: 620px) {
-	#greeting {width: 420px;}
-}
-
-@media screen and (max-width: 620px) {
 	#meteo-popup-window {width: 310px;}
 }
 
 @media screen and (max-width: 500px) {
 	#time {font-size: 10em;}
-
-	#greeting {
-		font-size: 2.2em;
-  	padding-bottom: 3%;
-	}
-
-	#main-focus-wraper {font-size: 1.8em;}
-
-	#main-focus {
-  	font-size: 0.8em;
-  	width: 315px;
-	}
-
  .quote {font-size: 1.15em;}
 }

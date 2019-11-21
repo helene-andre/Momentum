@@ -1,0 +1,73 @@
+/*============================== greeeting ================================*/
+.greeting {
+	height: 40px;
+	width: max-content;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.greeting__when {text-align: right;}
+
+.greeting__who {
+	color: white;
+	font-weight: normal;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	font-size: inherit;
+	text-align: left;
+	border: none;
+	background-image: none;
+	background-color: transparent;
+	box-shadow: none;
+	padding-top: 9px;
+	max-width: 350px;
+}
+
+::placeholder {color: #fff;}
+/*=========================================================================*/
+
+/*========================= media queries =================================*/
+@media screen and (max-height: 720px) {
+	.greeting {
+		font-size: 3.5em;
+		display: block;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		width: unset;
+	}
+	.greeting__when, .greeting__who {text-align: center;}
+}
+
+@media screen and (max-height: 620px) {
+	.greeting {font-size: 3.3em;}
+}
+
+@media screen and (max-height: 550px) {
+	.greeting {font-size: 3em;}
+}
+
+@media screen and (max-height: 393px) {
+  .greeting {
+		width: 600px;
+		transform: translateX(-50%);
+		font-size: 3em;
+		top: -23%;
+	}
+}
+
+@media screen and (max-height: 330px) {
+  .greeting {top: -33%;}
+}
+
+@media screen and (max-height: 270px) {
+  .greeting {top: -42%;}
+}
+
+@media screen and (max-width: 620px) {
+	.greeting {width: 420px;}
+}
+
+@media screen and (max-width: 500px) {
+	.greeting {font-size: 2.2em;}
+}

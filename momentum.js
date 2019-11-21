@@ -18,21 +18,39 @@ function showtime () {
 }
 //===================================================================================//
 
-//================================== clock ==========================================//
+//=============================== Greeting ==========================================//
+// Set a greeting message based on the hour.
 function greetingMessage (currentHour) {
-	if (currentHour >= 5 && currentHour < 12) {
-		$(".greeting").html('Good Morning')
-	}
-	if (currentHour > 12) {
-		$(".greeting").html('Good Afternoon')
-	}
-	if (currentHour >= 18 || currentHour < 5) {
-		$(".greeting").html('Good Evening')
-	}
+	let message = ''
+	if (currentHour >= 5 && currentHour < 12) message = 'Good Morning'
+	else if (currentHour >= 12 && currentHour < 18) message = 'Good Afternoon'
+	else if (currentHour >= 18 && currentHour < 5) message = 'Good Evening'
+	$(".greeting__when").html(`${message}\u00A0`)
+	// console.log({currentHour, message})
+}
+
+// function greetingMessage (currentHour) {
+// 	let message = ''
+// 	if (currentHour >= 5 && currentHour < 12) message = 'Good Morning'
+// 	else if (currentHour >= 12 && currentHour <18) message = 'Good Afternoon'
+// 	else if (currentHour >= 18 && currentHour <5) message = 'Good Evening'
+// 	$(".greeting__when").html(`${message}\u00A0`)
+// 	console.log(message)
+// }
+
+// Get username and store it in localStorage.
+function getUserName () {
+	let who = $(".greeting__who")
+	let userName = localStorage.userName || ''
+	if (userName) who.val(userName)
+
+	$('.greeting__who').keyup(function () {
+		localStorage.userName = this.value
+	})
 }
 //===================================================================================//
 
-//======================close popup when clicked outside ============================//
+//================== close popup window when clicked outside ========================//
 let isLinksPopupOpen = false
 
 $(document).click(function (e) {
@@ -82,7 +100,6 @@ $(document).click(function (e) {
 //===================================================================================//
 
 //====================== show whole background on mouseover =========================//
-
 window.addEventListener ('mouseover', function (event) {
 	if (event.target === document.getElementById("geolocation-block") || event.target === document.getElementsByClassName("geolocation-author")[0] || event.target === document.getElementsByClassName("geolocation")[0]) {
 		document.getElementsByClassName("toggle-off")[0].className = document.getElementsByClassName("toggle-off")[0].className.replace("toggle-off", "toggle-on")
@@ -94,12 +111,10 @@ window.addEventListener ('mouseout', function (event) {
 		document.getElementsByClassName("toggle-on")[0].className = document.getElementsByClassName("toggle-on")[0].className.replace("toggle-on", "toggle-off")
 	}
 })
-
 //===================================================================================//
 
-//================================== Get local weather ==============================//
-
-// Get weather of the day from https://www.apixu.com/ and https://ipinfo.io
+//============================== Weather & location =================================//
+// Get location using https://ipinfo.io .
 function getUserLocation () {
 	$.get("https://ipinfo.io", function(location) {
 		let loc = location.ip;
@@ -114,9 +129,11 @@ function getUserLocation () {
 	}, "jsonp");
 }
 
+// Get weather from https://www.apixu.com/ API.
 function getWeather (loc) {
 	let whatsTheWeather = "https://api.apixu.com/v1/current.json?key=9a5fe910c4104e7eb2d11925172205&q="+loc;
 	$.getJSON(whatsTheWeather, function(weather) {
+		// console.log("test", weather)
 		let tempFeelsLike = weather.current.feelslike_c
 		let tempCurrent = weather.current.temp_c
 
@@ -128,7 +145,7 @@ function getWeather (loc) {
 }
 //===================================================================================//
 
-//=============================== Get quote of the day ===============================//
+//============================ Quote of the day =====================================//
 // Get quote of the day from https://quotes.rest/qod .
 function getQuoteOfTheDay () {
 	$.get('https://quotes.rest/qod', function(test) {
@@ -146,14 +163,11 @@ function getQuoteOfTheDay () {
 }
 //===================================================================================//
 
-//============================== window onload ======================================//
+//===================== Call functions on document ready ============================//
 $(document).ready(function($) {
 	getUserLocation("metric")
 	getQuoteOfTheDay()
-})
-
-window.onload = function () {
 	showtime()
 	setInterval(showtime, 60000)
-	greetingMessage()
-}
+	getUserName()
+})
