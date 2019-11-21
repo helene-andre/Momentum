@@ -129,20 +129,42 @@ function getUserLocation () {
 	}, "jsonp");
 }
 
-// Get weather from https://www.apixu.com/ API.
 function getWeather (loc) {
-	let whatsTheWeather = "https://api.apixu.com/v1/current.json?key=9a5fe910c4104e7eb2d11925172205&q="+loc;
-	$.getJSON(whatsTheWeather, function(weather) {
-		// console.log("test", weather)
-		let tempFeelsLike = weather.current.feelslike_c
-		let tempCurrent = weather.current.temp_c
+	$.ajax({
+		url: 'http://api.weatherstack.com/current',
+		data: {
+			access_key: '9031e31916309fb42b8f54577f94cc54',
+			query: loc
+		},
+		dataType: 'json',
+		success: function(weather) {
+			// console.log("test", weather)
+			let tempFeelsLike = weather.current.feelslike
+			let tempCurrent = weather.current.temperature
 
-		$(".temperature__current").html(tempCurrent + " °C");
-		$(".temperature__feels-like").html(tempFeelsLike + " °C");
-		$(".weather-icon").attr("src", `http:${weather.current.condition.icon}`);
-		$(".description__text").html(weather.current.condition.text);
+			$(".temperature__current").html(tempCurrent + " °C");
+			$(".temperature__feels-like").html(tempFeelsLike + " °C");
+			$(".weather-icon").attr("src", `http:${weather.current.weather_icons[0]}`);
+			$(".description__text").html(weather.current.weather_descriptions[0]);
+		}
 	});
 }
+
+
+// Get weather from https://www.apixu.com/ API.
+// function getWeather (loc) {
+// 	let whatsTheWeather = "https://api.apixu.com/v1/current.json?key=9a5fe910c4104e7eb2d11925172205&q="+loc;
+// 	$.getJSON(whatsTheWeather, function(weather) {
+// 		// console.log("test", weather)
+// 		let tempFeelsLike = weather.current.feelslike_c
+// 		let tempCurrent = weather.current.temp_c
+
+// 		$(".temperature__current").html(tempCurrent + " °C");
+// 		$(".temperature__feels-like").html(tempFeelsLike + " °C");
+// 		$(".weather-icon").attr("src", `http:${weather.current.condition.icon}`);
+// 		$(".description__text").html(weather.current.condition.text);
+// 	});
+// }
 //===================================================================================//
 
 //============================ Quote of the day =====================================//
