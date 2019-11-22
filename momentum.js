@@ -18,25 +18,19 @@ function showtime () {
 }
 //===================================================================================//
 
-//=============================== Greeting ==========================================//
+//=============================== greeting ==========================================//
 // Set a greeting message based on the hour.
 function greetingMessage (currentHour) {
-	let message = ''
-	if (currentHour >= 5 && currentHour < 12) message = 'Good Morning'
-	else if (currentHour >= 12 && currentHour < 18) message = 'Good Afternoon'
-	else if (currentHour >= 18 && currentHour < 5) message = 'Good Evening'
-	$(".greeting__when").html(`${message}\u00A0`)
-	// console.log({currentHour, message})
+	if (12 > currentHour >= 5) {
+		$(".greeting__when").html('Good Morning')
+	}
+	if (18 > currentHour > 12) {
+		$(".greeting__when").html('Good Afternoon')
+	}
+	if (currentHour >= 18 || currentHour < 5) {
+		$(".greeting__when").html('Good Evening')
+	}
 }
-
-// function greetingMessage (currentHour) {
-// 	let message = ''
-// 	if (currentHour >= 5 && currentHour < 12) message = 'Good Morning'
-// 	else if (currentHour >= 12 && currentHour <18) message = 'Good Afternoon'
-// 	else if (currentHour >= 18 && currentHour <5) message = 'Good Evening'
-// 	$(".greeting__when").html(`${message}\u00A0`)
-// 	console.log(message)
-// }
 
 // Get username and store it in localStorage.
 function getUserName () {
@@ -45,6 +39,7 @@ function getUserName () {
 	if (userName) who.val(userName)
 
 	$('.greeting__who').keyup(function () {
+		this.style.width = ((this.value.length + 1) * 20) + 'px';
 		localStorage.userName = this.value
 	})
 }
@@ -52,7 +47,6 @@ function getUserName () {
 
 //================== close popup window when clicked outside ========================//
 let isLinksPopupOpen = false
-
 $(document).click(function (e) {
 	let container = $('#links-popup-window')
 
@@ -67,7 +61,6 @@ $(document).click(function (e) {
 })
 
 let isMeteoPopupOpen = false
-
 $(document).click(function (e) {
 	let container = $('#meteo-popup-window')
 
@@ -82,7 +75,6 @@ $(document).click(function (e) {
 })
 
 let isSettingsPopupOpen = false
-
 $(document).click(function (e) {
 	let container = $('#settings-popup-window')
 
@@ -117,7 +109,7 @@ window.addEventListener ('mouseout', function (event) {
 // Get location using https://ipinfo.io .
 function getUserLocation () {
 	$.get("https://ipinfo.io", function(location) {
-		let loc = location.ip;
+		let loc = location.loc;
 		getWeather(loc);
 
 		let countryCodes = {
@@ -129,42 +121,72 @@ function getUserLocation () {
 	}, "jsonp");
 }
 
+// Get weather using https://dark-sky.p.rapidapi.com.
 function getWeather (loc) {
-	$.ajax({
-		url: 'http://api.weatherstack.com/current',
-		data: {
-			access_key: '9031e31916309fb42b8f54577f94cc54',
-			query: loc
-		},
-		dataType: 'json',
-		success: function(weather) {
-			// console.log("test", weather)
-			let tempFeelsLike = weather.current.feelslike
-			let tempCurrent = weather.current.temperature
 
-			$(".temperature__current").html(tempCurrent + " °C");
-			$(".temperature__feels-like").html(tempFeelsLike + " °C");
-			$(".weather-icon").attr("src", `http:${weather.current.weather_icons[0]}`);
-			$(".description__text").html(weather.current.weather_descriptions[0]);
+	// Get local weather.
+	const url = "https://dark-sky.p.rapidapi.com/"+loc+"?lang=en&units=auto"
+	const settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": url,
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-host": "dark-sky.p.rapidapi.com",
+			"x-rapidapi-key": "75598e6402msha33bcd872cfc163p17c113jsn7df4ce859da5"
 		}
+	}
+
+	$.ajax(settings).done(function(weather) {
+		let tempFeelsLike = Math.round(weather.currently.apparentTemperature)
+		let tempCurrent = Math.round(weather.currently.temperature)
+		let weatherIcon = weather.currently.icon
+		let weatherSummary = weather.currently.summary
+
+		$(".temperature__current").html(tempCurrent + " °C");
+		$(".temperature__feels-like").html(tempFeelsLike + " °C");
+		$(".weather-icon").attr("id", `${weatherIcon}`);
+		$(".description__text").html(weatherSummary);
+		loadIcons()
 	});
+
+	// Get icon Canvas.
+	function loadIcons() {
+		let newSkycons = new Skycons({"color": "#fff"});
+		let skycons1 = newSkycons
+		let skycons2 = newSkycons
+		let skycons3 = newSkycons
+		let skycons4 = newSkycons
+		let skycons5 = newSkycons
+		let skycons6 = newSkycons
+		let skycons7 = newSkycons
+		let skycons8 = newSkycons
+		let skycons9 = newSkycons
+		let skycons10 = newSkycons
+
+		skycons1.add("clear-day", Skycons.CLEAR_DAY)
+		skycons2.add("clear-night", Skycons.CLEAR_NIGHT)
+		skycons3.add("rain", Skycons.RAIN)
+		skycons4.add("snow", Skycons.SNOW)
+		skycons5.add("wind", Skycons.WIND)
+		skycons6.add("sleet", Skycons.SLEET)
+		skycons7.add("fog", Skycons.FOG)
+		skycons8.add("cloudy", Skycons.CLOUDY)
+		skycons9.add("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY)
+		skycons10.add("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT)
+
+		skycons1.play()
+		skycons2.play()
+		skycons3.play()
+		skycons4.play()
+		skycons5.play()
+		skycons6.play()
+		skycons7.play()
+		skycons8.play()
+		skycons9.play()
+		skycons10.play()
+	 }
 }
-
-
-// Get weather from https://www.apixu.com/ API.
-// function getWeather (loc) {
-// 	let whatsTheWeather = "https://api.apixu.com/v1/current.json?key=9a5fe910c4104e7eb2d11925172205&q="+loc;
-// 	$.getJSON(whatsTheWeather, function(weather) {
-// 		// console.log("test", weather)
-// 		let tempFeelsLike = weather.current.feelslike_c
-// 		let tempCurrent = weather.current.temp_c
-
-// 		$(".temperature__current").html(tempCurrent + " °C");
-// 		$(".temperature__feels-like").html(tempFeelsLike + " °C");
-// 		$(".weather-icon").attr("src", `http:${weather.current.condition.icon}`);
-// 		$(".description__text").html(weather.current.condition.text);
-// 	});
-// }
 //===================================================================================//
 
 //============================ Quote of the day =====================================//
@@ -181,7 +203,7 @@ function getQuoteOfTheDay () {
 			$(".quote").html('“Those who dare to fail miserably can achieve greatly.”');
 			$(".author").html('John F. Kennedy');
 		}
-	});
+	})
 }
 //===================================================================================//
 

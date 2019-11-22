@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="momentum.js" type="text/javascript"></script>
+		<script src="https://rawgit.com/darkskyapp/skycons/master/skycons.js"></script>
 		<title>Momentum</title>
 	</head>
 
@@ -43,8 +44,8 @@
 				<div id="meteo-block">
 					<div class="meteo meteo-btn">
 						<div class="meteo__item-top">
-							<span><img class="weather-icon meteo-btn__item" width="44"/></span>
-							<span class="temperature__current meteo-btn__item"></span>
+							<canvas class="weather-icon meteo-btn__item" width="31" height="66"></canvas>
+							<div class="temperature__current meteo-btn__item"></div>
 						</div>
 						<div class="meteo__item-bottom location__city meteo-btn__item"></div>
 					</div>
@@ -68,7 +69,9 @@
 
 				<div class="greeting">
 					<div class="greeting__when"></div>
-					<input type="text" class="greeting__who" placeholder="what's your name?" onkeypress="this.style.width = ((this.value.length + 1) * 20) + 'px';"/>
+					<div>
+						<input type="text" class="greeting__who" placeholder="what's your name?"/>
+					</div>
 				</div>
 			</div>
 
@@ -92,12 +95,11 @@
 				</form>
 			</div>
 			<div id="geolocation-block">
-					<div class="geolocation">
-						<span class="location__city"></span>
-						<span>, </span>
-						<span class="location__country"></span>
-					</div>
-
+				<div class="geolocation">
+					<span class="location__city">Somwhere in the world</span>
+					<span>, </span>
+					<span class="location__country">Country</span>
+				</div>
 
 				<div class="geolocation-author">
 					<a href="#">Photo By Incognito</a>
