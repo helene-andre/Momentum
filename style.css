@@ -302,7 +302,7 @@ a, i {
 	text-align: center;
 	text-shadow: 0.4px 0.4px 2px rgba(0, 0, 0, 0.5);
   height: 471px;
-  width: 600px;
+	width: 100%;
   position: fixed;
   top: 32%;
   left: 50%;

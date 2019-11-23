@@ -21,26 +21,36 @@ function showtime () {
 //=============================== greeting ==========================================//
 // Set a greeting message based on the hour.
 function greetingMessage (currentHour) {
-	if (12 > currentHour >= 5) {
-		$(".greeting__when").html('Good Morning')
+	if (currentHour >= 5 && currentHour < 12) {
+		$(".greet__time").html('Good morning &nbsp;')
 	}
-	if (18 > currentHour > 12) {
-		$(".greeting__when").html('Good Afternoon')
+	if (currentHour > 12 && currentHour < 18) {
+		$(".greet__time").html('Good afternoon &nbsp;')
 	}
-	if (currentHour >= 18 || currentHour < 5) {
-		$(".greeting__when").html('Good Evening')
+	if (currentHour >= 18 && currentHour < 5) {
+		$(".greet__time").html('Good evening &nbsp;')
 	}
 }
 
 // Get username and store it in localStorage.
-function getUserName () {
-	let who = $(".greeting__who")
-	let userName = localStorage.userName || ''
-	if (userName) who.val(userName)
+function getUsername () {
+	let who = $(".greet__username")
+	let username = localStorage.username || ''
+	if (username) who.val(username)
 
-	$('.greeting__who').keyup(function () {
+	// Resize username container on load.
+	$('.greet__username').each(function () {
+		if(username) {
+			this.style.width = ((this.value.length + 1) * 20) + 'px';
+			localStorage.username = this.value
+		}
+	})
+
+	// Resize username container on keyup.
+	$('.greet__username').keyup(function () {
 		this.style.width = ((this.value.length + 1) * 20) + 'px';
-		localStorage.userName = this.value
+		localStorage.username = this.value
+		if (localStorage.username === '') this.style.width = 'unset';
 	})
 }
 //===================================================================================//
@@ -213,5 +223,5 @@ $(document).ready(function($) {
 	getQuoteOfTheDay()
 	showtime()
 	setInterval(showtime, 60000)
-	getUserName()
+	getUsername()
 })
