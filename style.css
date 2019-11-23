@@ -429,6 +429,8 @@ a, i {
 	bottom: 2.5%;
 	left: 50%;
 	transform: translate(-50%);
+	height: 50px;
+	overflow: hidden;
 }
 
 .quote {
@@ -450,6 +452,11 @@ a, i {
 	top: 39%;
 	text-align: center;
 	transition: all 0.3s ease-in-out;
+}
+
+#quote-block:hover {
+	height: fit-content;
+	overflow: visible;
 }
 
 #quote-block:hover .quote-author {

@@ -133,7 +133,6 @@ function getUserLocation () {
 
 // Get weather using https://dark-sky.p.rapidapi.com.
 function getWeather (loc) {
-
 	// Get local weather.
 	const url = "https://dark-sky.p.rapidapi.com/"+loc+"?lang=en&units=auto"
 	const settings = {
@@ -217,8 +216,30 @@ function getQuoteOfTheDay () {
 }
 //===================================================================================//
 
+//======================= Animate author block if heart click =======================//
+function animateHearts () {
+	$(".icon-link").click(function () {
+		console.log('clicked')
+		var htmlElements = [];
+		for (var i = 0; i < 30; i++) {
+			htmlElements += '<div class="quote__heart icon icon-like-love-streamline"></div>';
+		}
+		$(".quote__hearts").html(htmlElements).addClass('show')
+
+		// heart hide on click.
+		let heart = $('.quote__heart')
+		heart.each(function(i) {
+			heart.click(function() {
+				$(this).addClass('hide')
+			})
+		})
+	})
+}
+//===================================================================================//
+
 //===================== Call functions on document ready ============================//
 $(document).ready(function($) {
+	animateHearts()
 	getUserLocation("metric")
 	getQuoteOfTheDay()
 	showtime()
