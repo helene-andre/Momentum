@@ -3,7 +3,6 @@
 	<head>
 		<link rel="stylesheet" href="style.css"/>
 		<link rel="stylesheet" href="css/greet.css"/>
-		<link rel="stylesheet" href="css/hearts-animation.css"/>
 		<link rel="iconstyle" href="/fonts-icons/icons-reference.html"/>
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 		<meta charset="utf-8" />
@@ -45,7 +44,7 @@
 				<div id="meteo-block">
 					<div class="meteo meteo-btn">
 						<div class="meteo__item-top">
-							<canvas class="weather-icon meteo-btn__item" width="31" height="66"></canvas>
+							<canvas class="weather-icon meteo-btn__item" width="100"></canvas>
 							<div class="temperature__current meteo-btn__item"></div>
 						</div>
 						<div class="meteo__item-bottom location__city meteo-btn__item"></div>
@@ -55,7 +54,6 @@
 						<div id="meteo-city" class="location__city"></div>
 						<div id="meteo-state"><span class="description__text">...</span></div>
 						<div>
-							<i class="icon icon-sun" id="meteo-icon"></i>
 							<span class="temperature__current">...</span>
 							<span class="temperature__feels-like" title="feels like">...</span>
 						</div>
@@ -70,7 +68,7 @@
 
 				<div class="greet">
 					<div class="greet__time"></div>
-					<input type="text" id="greet__username" class="greet__username" placeholder="What's your name?"/>
+					<input type="text" id="greet__username" class="greet__username" placeholder="what's your name?"/>
 				</div>
 			</div>
 
@@ -79,12 +77,11 @@
 				<div class="quote-author">
 					<span class="author"></span>
 					<span>
-						<i class="icon icon-like-love-streamline icon-link"></i>
-						<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fhelene-andre.github.io/Momentum%2F&text=Awesome+web+app!+(Or nearly)&hashtags=yeahbaby, coolwebsite" target="_blank"><i class="icon icon-twitter icon-link"></i></a>
+						<i class="icon icon-heart-o icon-link"></i>
+						<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fhelene-andre.github.io/Momentum%2F&text=Awesome+web+app!&hashtags=yeahbaby, coolwebsite" target="_blank"><i class="icon icon-twitter icon-link"></i></a>
 					</span>
 				</div>
 			</div>
-			<div class="quote__hearts"></div>
 		</div>
 
 		<div class="settings-geolocation-wrapper">
@@ -104,7 +101,7 @@
 				<div class="geolocation-author">
 					<a href="#">Photo By Incognito</a>
 					<span id="author-heart-icon">
-						<i class="icon icon-like-love-streamline icon-link"></i>
+						<i class="icon icon-heart-o icon-link-photo"></i>
 					</span>
 				</div>
 			</div>
