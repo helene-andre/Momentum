@@ -1,60 +1,58 @@
 //================================== clock ==========================================//
-function timeupdateHours () {
+function timeUpdateHours () {
 	let today = new Date()
-	let hours = today.getHours()<10 ? '0' + today.getHours() : today.getHours()
-	greetingMessage(hours)
+	let hours = today.getHours() < 10 ? '0' + today.getHours() : today.getHours()
 	return hours
 }
 
-function timeupdateMinutes () {
+function timeUpdateMinutes () {
 	let today = new Date()
-	let minutes = today.getMinutes()<10 ? '0' + today.getMinutes() : today.getMinutes()
+	let minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()
 	return minutes
 }
 
-function showtime () {
-	document.getElementById('hours').innerHTML = timeupdateHours()
-	document.getElementById('minutes').innerHTML = timeupdateMinutes()
+function showTime () {
+	let hours = timeUpdateHours()
+	$('#hours').html(hours)
+	$('#minutes').html(timeUpdateMinutes())
+	greetingMessage(hours)
 }
 //===================================================================================//
 
 //=============================== greeting ==========================================//
 // Set a greeting message based on the hour.
 function greetingMessage (currentHour) {
-	if (currentHour >= 5 && currentHour < 12) {
-		$('.greet__time').html('Good morning, &nbsp;')
-	}
-	if (currentHour > 12 && currentHour < 18) {
-		$('.greet__time').html('Good afternoon, &nbsp;')
-	}
-	if (currentHour >= 18 && currentHour < 5) {
-		$('.greet__time').html('Good evening, &nbsp;')
-	}
+	let message = ''
+	if (currentHour >= 5 && currentHour < 12) message = 'Good morning'
+	else if (currentHour >= 12 && currentHour < 18) message = 'Good afternoon'
+	else if (currentHour >= 18 && currentHour < 5) message = 'Good evening'
+	$('.greeting__message').html(message + ',&nbsp;')
 }
 
-// Get username and store it in localStorage.
-function getUsername () {
-	let who = $('.greet__username')
-	let username = localStorage.username || ''
-	if (username) who.val(username)
+function checkUsername () {
+	let $usernameInput = $('#greeting__username')
+	if (localStorage.username) $usernameInput.html(localStorage.username)
+	$usernameInput[localStorage.username ? 'removeClass' : 'addClass']('empty')
 
-	// Resize username container on load.
-	$('.greet__username').each(function () {
-		if(username) {
-			this.style.width = ((this.value.length + 1) * 20) + 'px'
-			localStorage.username = this.value
-		}
-	})
+	$('#greeting__username')
+		.on('keyup', function (e) {
+			localStorage.username = this.innerHTML
+		})
+		.on('keypress', function (e) {
+			if (e.which === 13) $(this).blur()
+		})
+		.on('focus', function (e) {
+			$usernameInput.addClass('focus highlight')
+			setTimeout(function () {$usernameInput.removeClass('highlight')}, 300)
+		})
+		.on('blur', function (e) {
+			localStorage.username = this.innerHTML
+			$usernameInput.removeClass('focus')
+			$usernameInput[localStorage.username ? 'removeClass' : 'addClass']('empty')
 
-	// Resize username container on keyup.
-	$('.greet__username').keyup(function () {
-		this.style.width = ((this.value.length + 1) * 20) + 'px'
-		localStorage.username = this.value
-		if (localStorage.username === '') this.style.width = 'unset'
-	})
-
-	// Remove focus from input field on enter.
-	$('#greet__username').on('keypress',function (e) { if(e.which == 13) $('#greet__username').blur()})
+			$usernameInput.addClass('highlight')
+			setTimeout(function () {$usernameInput.removeClass('highlight')}, 300)
+		})
 }
 //===================================================================================//
 
@@ -219,7 +217,7 @@ function getQuoteOfTheDay () {
 }
 //===================================================================================//
 
-//===================================================================================//
+//============================== Animate hearts =====================================//
 function animateHeart () {
 	// Animate heart in the quote of the getQuoteOfTheDay.
 	let heart = $('.icon-link')
@@ -242,7 +240,7 @@ $(document).ready(function($) {
 	animateHeart()
 	getUserLocation('metric')
 	getQuoteOfTheDay()
-	showtime()
-	setInterval(showtime, 60000)
-	getUsername()
+	showTime()
+	setInterval(showTime, 60000)
+	checkUsername()
 })
