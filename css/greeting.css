@@ -27,12 +27,9 @@
 	transition: 0.3s ease-out;
 	border-radius: 3px;
 }
-.greeting__username.empty:after {
-	content: "what's your name?";
-}
-.greeting__username.focus:after {
-	display: none;
-}
+.greeting__username.empty:after {content: "what's your name?";}
+.greeting__username.empty + span {display: none}
+.greeting__username.focus:after {display: none;}
 .greeting__username:focus:before {
 	content: '';
 	position: absolute;

@@ -27,17 +27,22 @@ a:hover {opacity: 1;}
 	opacity: 0.7;
 	cursor: pointer;
 	position: relative;
-  top: -2px;
+	top: -1px;
+	padding-right: 5px;
 }
 
 .icon-link:hover {opacity: 1;}
 
+#icon-add {
+	top: 1px;
+}
+
 canvas {
 	position: relative;
 	left: -20px;
-	transform: scale(0.4);
+	transform: scale(0.3);
 	margin-top: -14px;
-	margin-bottom: -44px;
+	margin-bottom: -50px;
 }
 /*===========================================================================*/
 
@@ -78,21 +83,15 @@ canvas {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-heart:before {
-  content: "\61";
-}
-.icon-heart-o:before {
-  content: "\62";
-}
-.icon-settings:before {
-  content: "\63";
-}
-.icon-chrome:before {
-  content: "\64";
-}
-.icon-twitter:before {
-  content: "\65";
-}
+.icon-heart:before {content: "\61";}
+.icon-heart-o:before {content: "\62";}
+.icon-settings:before {content: "\63";}
+.icon-chrome:before {content: "\64";}
+.icon-twitter:before {content: "\65";}
+.icon-apps:before {content: "\66";}
+.icon-add:before {content: "\67";}
+.icon-search:before {content: "\68";}
+.icon-dots:before {content: "\69";}
 /*=========================================================================*/
 
 /*============================= background images ===========================*/
@@ -137,10 +136,11 @@ canvas {
 #links-popup-window {
 	width: 200px;
 	height: 108px;
-	background-color: black;
 	position: fixed;
 	left: 1.15%;
 	top: 7%;
+	background-color: black;
+	opacity: 0.8;
 	border-radius: 5px;
 	font-size: 1.3em;
 	transition: all 0.3s ease-in-out;
@@ -154,7 +154,7 @@ canvas {
   height: 0;
   border: 7px solid transparent;
   border-bottom-color: black;
-  opacity: 0.9;
+  opacity: 0.8;
   position: absolute;
   left: 13%;
   bottom: 100%;
@@ -166,9 +166,12 @@ input[type="checkbox"]:checked ~ #links-popup-window {
   transform: translateY(10%);
 }
 
-#chrometab, #apps {
-	opacity: 0.75;
-	transition: all 0.3s ease-in-out;
+#links-list {
+	list-style-type: none;
+	position: relative;
+	left: 21px;
+  top: 10px;
+  line-height: 29px;
 }
 
 a, i {
@@ -177,31 +180,32 @@ a, i {
   height: 16px;
 }
 
-#chrome {
-	padding:0;
-	margin: 0;
-  position: relative;
-  top: -2px;
-}
+#chrome {top: -3px;}
 
-#chrometab:hover, #apps:hover {opacity: 1;}
-
-#newlink {
+/* New link input field. */
+#new-link {
 	border: none;
-  font-size: 17px;
+	font-size: 1em;
   text-align: left;
   position: relative;
 	top: 5px;
-	width: 80%;
+	width: 70%;
+	background: none;
+	color: #fff;
+	outline: none;
 }
 
-#links-list {
-	list-style-type: none;
-	position: relative;
-	left: 21px;
-  top: 10px;
-  line-height: 29px;
+#new-link:focus {
+	content: '';
+	border-bottom: 2px solid #fff;
 }
+
+.link__chrome, .link__apps, .link__new-link {
+	opacity: 0.99;
+	transition: 0.1s all ease-in-out;
+}
+.link__new-link {opacity: 0.4;}
+.link__chrome:hover, .link__apps:hover, .link__new-link:hover {opacity: 1;}
 /*=============================================================================*/
 
 /*================================= meteo top right ===========================*/
@@ -211,7 +215,7 @@ a, i {
   position: fixed;
 	top: -0.5%;
 	right: 2%;
-	opacity: 0.7;
+	opacity: 0.8;
 }
 
 .meteo-btn {
@@ -367,7 +371,7 @@ a, i {
 #settings-popup-window {
 	width: 700px;
 	height: 450px;
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: 5px;
 	position: fixed;
 	left: 0.8%;
@@ -475,12 +479,14 @@ a, i {
 	transform: translateY(-75%);
 }
 
-#quote-block:hover .quote {transform: translateY(-66%);}
+#quote-block:hover .quote {transform: translateY(-37%);}
 
 span,i {
 	display: inline-block;
 	vertical-align: sub;
 }
+
+#twitter {top:-3px;}
 /*=========================================================================*/
 
 /*========================= whole background up ===========================*/
@@ -568,6 +574,8 @@ span,i {
 }
 
 @media screen and (max-width: 750px) {
+	.greeting {top: 35%;}
+
 	#quote-block {
 		height: 60px;
 		width: 350px;
@@ -577,6 +585,7 @@ span,i {
 		transform: translate(-50%);
 	}
 
+	.quote {top: 67%;}
 	#settings-popup-window {right: 0%;}
 
 	#geolocation-block {

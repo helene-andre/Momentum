@@ -23,18 +23,19 @@
 				<div class="links" id="links" for="links-checkbox" >Links</div>
 				<div id="links-popup-window">
 					<ul id="links-list">
-					  	<li>
+					  	<li class="link__chrome">
 					  		<a id="chrometab" href="#">
 									<i id="chrome" class="icon icon-chrome icon-link"></i> Chrome tab
 					  		</a>
 					  	</li>
-					  	<li>
+					  	<li class="link__apps">
 					  		<a id="apps" href="#">
 									<i id="th" class="icon icon-apps icon-link"></i> Apps
 					  		</a>
 					  	</li>
-					  	<li>
-								<input type="text" placeholder="New Link" autocomplete="off" id="newlink"/>
+					  	<li class="link__new-link">
+								<i id="icon-add" class="icon icon-add icon-link"></i>
+								<input type="text" placeholder="New Link" autocomplete="off" id="new-link"/>
 							</li>
 					</ul>
 				</div>
@@ -68,7 +69,8 @@
 
 				<div class="greeting">
 					<div class="greeting__message"></div>
-					<div id="greeting__username" class="greeting__username empty" spellcheck="false" contenteditable></div>
+					<div class="greeting__username empty" spellcheck="false" contenteditable></div>
+					<span>.</span>
 				</div>
 			</div>
 
@@ -78,7 +80,9 @@
 					<span class="author"></span>
 					<span>
 						<i class="icon icon-heart-o icon-link"></i>
-						<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fhelene-andre.github.io/Momentum%2F&text=Awesome+web+app!&hashtags=yeahbaby, coolwebsite" target="_blank"><i class="icon icon-twitter icon-link"></i></a>
+						<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fhelene-andre.github.io/Momentum%2F&text=Awesome+web+app!&hashtags=yeahbaby, coolwebsite" target="_blank">
+							<i id="twitter" class="icon icon-twitter icon-link"></i>
+						</a>
 					</span>
 				</div>
 			</div>
@@ -94,12 +98,10 @@
 			<div id="geolocation-block">
 				<div class="geolocation">
 					<span class="location__city">Somwhere in the world</span>
-					<span>, </span>
-					<span class="location__country">Country</span>
 				</div>
 
 				<div class="geolocation-author">
-					<a href="#">Photo By Incognito</a>
+					<a href="https://unsplash.com/@betagamma?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank">Daniil Silantev </a>
 					<span id="author-heart-icon">
 						<i class="icon icon-heart-o icon-link-photo"></i>
 					</span>

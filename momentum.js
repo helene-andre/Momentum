@@ -30,11 +30,11 @@ function greetingMessage (currentHour) {
 }
 
 function checkUsername () {
-	let $usernameInput = $('#greeting__username')
+	let $usernameInput = $('.greeting__username')
 	if (localStorage.username) $usernameInput.html(localStorage.username)
 	$usernameInput[localStorage.username ? 'removeClass' : 'addClass']('empty')
 
-	$('#greeting__username')
+	$usernameInput
 		.on('keyup', function (e) {
 			localStorage.username = this.innerHTML
 		})
@@ -153,8 +153,8 @@ function getWeather (loc) {
 		let weatherIcon = weather.currently.icon
 		let weatherSummary = weather.currently.summary
 
-		$('.temperature__current').html(tempCurrent + ' °');
-		$('.temperature__feels-like').html(tempFeelsLike + ' °');
+		$('.temperature__current').html(tempCurrent + '°');
+		$('.temperature__feels-like').html(tempFeelsLike + '°');
 		$('.weather-icon').attr('id', `${weatherIcon}`);
 		$('.description__text').html(weatherSummary);
 		loadIcons()
@@ -163,38 +163,14 @@ function getWeather (loc) {
 	// Get icon Canvas.
 	function loadIcons() {
 		let newSkycons = new Skycons({'color': '#fff'});
-		let skycons1 = newSkycons
-		let skycons2 = newSkycons
-		let skycons3 = newSkycons
-		let skycons4 = newSkycons
-		let skycons5 = newSkycons
-		let skycons6 = newSkycons
-		let skycons7 = newSkycons
-		let skycons8 = newSkycons
-		let skycons9 = newSkycons
-		let skycons10 = newSkycons
+		let skycons1, skycons2, skycons3, skycons4, skycons5, skycons6, skycons7, skycons8, skycons9, skycons10
+		let skycons = [skycons1, skycons2, skycons3, skycons4, skycons5, skycons6, skycons7, skycons8, skycons9, skycons10]
+		let skyconsClasses = ['clear-day', 'clear-night', 'rain', 'snow', 'wind', 'sleet', 'fog', 'cloudy', 'partly-cloudy-day', 'partly-cloudy-night']
+		let skyconsIcons = [Skycons.CLEAR_DAY, Skycons.CLEAR_NIGHT, Skycons.RAIN, Skycons.SNOW, Skycons.WIND, Skycons.SLEET, Skycons.FOG, Skycons.CLOUDY, Skycons.PARTLY_CLOUDY_DAY, Skycons.PARTLY_CLOUDY_NIGHT]
 
-		skycons1.add('clear-day', Skycons.CLEAR_DAY)
-		skycons2.add('clear-night', Skycons.CLEAR_NIGHT)
-		skycons3.add('rain', Skycons.RAIN)
-		skycons4.add('snow', Skycons.SNOW)
-		skycons5.add('wind', Skycons.WIND)
-		skycons6.add('sleet', Skycons.SLEET)
-		skycons7.add('fog', Skycons.FOG)
-		skycons8.add('cloudy', Skycons.CLOUDY)
-		skycons9.add('partly-cloudy-day', Skycons.PARTLY_CLOUDY_DAY)
-		skycons10.add('partly-cloudy-night', Skycons.PARTLY_CLOUDY_NIGHT)
-
-		skycons1.play()
-		skycons2.play()
-		skycons3.play()
-		skycons4.play()
-		skycons5.play()
-		skycons6.play()
-		skycons7.play()
-		skycons8.play()
-		skycons9.play()
-		skycons10.play()
+		for (i = 0; i < 10; i++) skycons[i] = newSkycons
+		for (j = 0; j < 10; j++) skycons[j].add(skyconsClasses[j], skyconsIcons[j])
+		for (k = 0; k < 10; k++) skycons[k].play()
 	 }
 }
 //===================================================================================//
@@ -238,7 +214,7 @@ function animateHeart () {
 //===================== Call functions on document ready ============================//
 $(document).ready(function($) {
 	animateHeart()
-	getUserLocation('metric')
+	getUserLocation()
 	getQuoteOfTheDay()
 	showTime()
 	setInterval(showTime, 60000)
