@@ -89,15 +89,15 @@ let isSettingsPopupOpen = false
 $(document).click(function (e) {
 	let container = $('#settings-popup-window')
 
-	if ($(e.target).is('#settings') && !isSettingsPopupOpen) {
+	if ($(e.target).is('#settings-label') && !isSettingsPopupOpen) {
 		container.show()
 		isSettingsPopupOpen = true
-		$('#settings').addClass('rotate')
+		$('#settings-label').addClass('rotate')
 	}
 	else if (!$(e.target).is(container) && !container.has(e.target).length) {
 		container.hide()
 		isSettingsPopupOpen = false
-		$('#settings').removeClass('rotate')
+		$('#settings-label').removeClass('rotate')
 	}
 })
 //===================================================================================//
@@ -193,29 +193,10 @@ function getQuoteOfTheDay () {
 }
 //===================================================================================//
 
-//============================== Animate hearts =====================================//
-function animateHeart () {
-	// Animate heart in the quote of the getQuoteOfTheDay.
-	let heart = $('.icon-link')
-	heart.click(function () {
-		if (heart.hasClass('icon-heart-o')) heart.removeClass('icon-heart-o').addClass('icon-heart')
-		else heart.removeClass('icon-heart').addClass('icon-heart-o')
-	})
-
-	// Animate heart in the photo credits.
-	let heartSettings = $('.icon-link-photo')
-	heartSettings.click(function () {
-		if (heartSettings.hasClass('icon-heart-o')) heartSettings.removeClass('icon-heart-o').addClass('icon-heart')
-		else heartSettings.removeClass('icon-heart').addClass('icon-heart-o')
-	})
-}
-//===================================================================================//
-
 //===================== Call functions on document ready ============================//
 $(document).ready(function($) {
-	animateHeart()
-	getUserLocation()
-	getQuoteOfTheDay()
+	// getUserLocation()
+	// getQuoteOfTheDay()
 	showTime()
 	setInterval(showTime, 60000)
 	checkUsername()
