@@ -25,7 +25,7 @@ function greetingMessage (currentHour) {
 	let message = ''
 	if (currentHour >= 5 && currentHour < 12) message = 'Good morning'
 	else if (currentHour >= 12 && currentHour < 18) message = 'Good afternoon'
-	else if (currentHour >= 18 && currentHour < 5) message = 'Good evening'
+	else message = 'Good evening'
 	$('.greeting__message').html(message + ',&nbsp;')
 }
 
@@ -244,8 +244,8 @@ function setBackground () {
 
 //===================== Call functions on document ready ============================//
 $(document).ready(function($) {
-	// getUserLocation()
-	// getQuoteOfTheDay()
+	getUserLocation()
+	getQuoteOfTheDay()
 	showTime()
 	setInterval(showTime, 60000)
 	checkUsername()
