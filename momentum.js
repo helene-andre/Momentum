@@ -193,6 +193,55 @@ function getQuoteOfTheDay () {
 }
 //===================================================================================//
 
+//======================= Random background =========================================//
+const picturesCaptions = [
+	{
+		author: 'Nick Cooper',
+		location: 'Morskie Oko, Poland',
+		src: 'image/background-image-0.jpg',
+		href: 'https://unsplash.com/@cooper301'
+	},
+	{
+		author: '',
+		location: 'City of Bristol, United Kingdom',
+		src: 'image/background-image-1.jpg',
+		href: 'https://unsplash.com/@m_gatus'
+	},
+	{
+		author: 'Gatis Marcinkevics',
+		location: 'City of Bristol, United Kingdom',
+		src: 'image/background-image-1.jpg',
+		href: 'https://unsplash.com/@m_gatus'
+	},
+	{
+		author: 'Claudio Testa',
+		location: 'Haselschacher Buck, Vogtsburg, Germany',
+		src: 'image/background-image-2.jpg',
+		href: 'https://unsplash.com/@claudiotesta'
+	},
+	{
+		author: 'Eberhard Grossgasteiger',
+		location: 'Mühlwald, South Tyrol, Italy',
+		src: 'image/background-image-3.jpg',
+		href: 'https://unsplash.com/@eberhardgross'
+	},
+	{
+		author: 'Zach Reiner',
+		location: 'Driftwood Beach Trail, Jekyll Island, United States',
+		src: 'image/background-image-4.jpg',
+		href: 'https://unsplash.com/@_zachreiner_'
+	}
+]
+function setBackground () {
+	let randomNumber = Math.floor(Math.random() * picturesCaptions.length)
+
+	document.getElementById('background-author').innerHTML = picturesCaptions[randomNumber].author
+	document.getElementById('background-author').href = picturesCaptions[randomNumber].href
+	document.getElementById('background-location').innerHTML = picturesCaptions[randomNumber].location
+	document.getElementById('background-src').src = picturesCaptions[randomNumber].src
+}
+//===================================================================================//
+
 //===================== Call functions on document ready ============================//
 $(document).ready(function($) {
 	// getUserLocation()
@@ -200,4 +249,5 @@ $(document).ready(function($) {
 	showTime()
 	setInterval(showTime, 60000)
 	checkUsername()
+	setBackground()
 })

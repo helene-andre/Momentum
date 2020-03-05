@@ -15,12 +15,12 @@
 
 	<body>
 		<div class="background-images">
-			<img src="image/background-image.jpg">
+			<img id="background-src" src="">
 		</div>
 
 		<div class="toggle-off">
 			<form id="links-block">
-				<div class="links" id="links" for="links-checkbox" >Links</div>
+				<div class="links" id="links" for="links-checkbox">Links</div>
 				<div id="links-popup-window">
 					<ul id="links-list">
 					  	<li class="link__chrome">
@@ -122,11 +122,11 @@
 			</div>
 			<div id="geolocation-block">
 				<div class="geolocation">
-					<span class="location__city">Somwhere in the world</span>
+					<span class="location__city" id="background-location">Somewhere in the world</span>
 				</div>
 
 				<div class="geolocation-author">
-					<a href="https://unsplash.com/@betagamma?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank">Daniil Silantev </a>
+					<a id="background-author" href="" target="_blank"></a>
 					<span id="author-heart-icon">
 						<i class="icon icon-heart-o icon-link-photo"></i>
 					</span>
