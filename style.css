@@ -50,19 +50,15 @@ canvas {
 
 /*=================================== font ==================================*/
 @font-face {
-  font-family: "fonts-icons";
-  src:url("fonts/fonts-icons.eot");
-  src:url("fonts/fonts-icons.eot?#iefix") format("embedded-opentype"),
-    url("fonts/fonts-icons.woff") format("woff"),
-    url("fonts/fonts-icons.ttf") format("truetype"),
-    url("fonts/fonts-icons.svg#fonts-icons") format("svg");
+  font-family: "icon";
+  src: url("./css/fonts/icon.woff") format("woff"), /* Modern Browsers */
+    url("./css/fonts/icon.woff2") format("woff2"); /* Modern Browsers */
   font-weight: normal;
   font-style: normal;
-
 }
 
 [data-icon]:before {
-  font-family: "fonts-icons" !important;
+  font-family: "icon" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -75,7 +71,7 @@ canvas {
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "fonts-icons" !important;
+  font-family: "icon" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -85,15 +81,13 @@ canvas {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-heart:before {content: "\61";}
-.icon-heart-o:before {content: "\62";}
-.icon-settings:before {content: "\63";}
-.icon-chrome:before {content: "\64";}
-.icon-twitter:before {content: "\65";}
-.icon-apps:before {content: "\66";}
-.icon-add:before {content: "\67";}
-.icon-search:before {content: "\68";}
-.icon-dots:before {content: "\69";}
+.icon-settings:before {content: "\62";}
+.icon-chrome:before {content: "\63";}
+.icon-apps:before {content: "\64";}
+.icon-twitter:before {content: "\66";}
+.icon-search:before {content: "\61";}
+.icon-heart-o:before {content: "\67";}
+.icon-heart:before {content: "\68";}
 /*=========================================================================*/
 
 /*============================= background images ===========================*/
