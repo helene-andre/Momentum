@@ -1,20 +1,10 @@
 //================================== clock ==========================================//
-function timeUpdateHours () {
-	let today = new Date()
-	let hours = today.getHours() < 10 ? '0' + today.getHours() : today.getHours()
-	return hours
-}
-
-function timeUpdateMinutes () {
-	let today = new Date()
-	let minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()
-	return minutes
-}
-
-function showTime () {
-	let hours = timeUpdateHours()
+function getTime () {
+  let today = new Date()
+  let hours = today.getHours() < 10 ? '0' + today.getHours() : today.getHours()
+  let minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()
 	$('#hours').html(hours)
-	$('#minutes').html(timeUpdateMinutes())
+	$('#minutes').html(minutes)
 	greetingMessage(hours)
 }
 //===================================================================================//
@@ -193,8 +183,8 @@ function getQuoteOfTheDay () {
 }
 //===================================================================================//
 
-//======================= Random background =========================================//
-const picturesCaptions = [
+//==================== Picture background, author and location ======================//
+const backgrounds = [
 	{
 		author: 'Nick Cooper',
 		location: 'Morskie Oko, Poland',
@@ -233,12 +223,12 @@ const picturesCaptions = [
 	}
 ]
 function setBackground () {
-	let randomNumber = Math.floor(Math.random() * picturesCaptions.length)
+	let randomNumber = Math.floor(Math.random() * backgrounds.length)
 
-	document.getElementById('background-author').innerHTML = picturesCaptions[randomNumber].author
-	document.getElementById('background-author').href = picturesCaptions[randomNumber].href
-	document.getElementById('background-location').innerHTML = picturesCaptions[randomNumber].location
-	document.getElementById('background-src').src = picturesCaptions[randomNumber].src
+	document.getElementById('background-author').innerHTML = `Photo by ${backgrounds[randomNumber].author}`
+	document.getElementById('background-author').href = backgrounds[randomNumber].href
+	document.getElementById('background-location').innerHTML = backgrounds[randomNumber].location
+	document.getElementById('background-src').src = backgrounds[randomNumber].src
 }
 //===================================================================================//
 
@@ -246,8 +236,8 @@ function setBackground () {
 $(document).ready(function($) {
 	getUserLocation()
 	getQuoteOfTheDay()
-	showTime()
-	setInterval(showTime, 60000)
+	getTime()
+	setInterval(getTime, 60000)
 	checkUsername()
 	setBackground()
 })
