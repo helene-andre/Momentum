@@ -13,37 +13,41 @@
 	</head>
 
 	<body>
-		<div class="background-images">
-			<img id="background-src" src="">
-		</div>
-		<form action="https://www.google.com/search">
+		<!-- Background. -->
+		<img class="background__src" src="">
+
+		<!-- Google search. -->
+		<!-- <form action="https://www.google.com/search">
 			<label for="gsearch">Search Google:</label>
 			<input type="search" id="gsearch" name="q">
 			<input type="submit">
-		</form>
-		<div class="toggle-off">
-			<form id="links-block">
-				<div class="links" id="links" for="links-checkbox">Links</div>
-				<div id="links-popup-window">
-					<ul id="links-list">
-					  	<li class="link__chrome">
-					  		<a id="chrometab" href="#">
-									<i id="chrome" class="icon icon-chrome icon-link"></i> Chrome tab
-					  		</a>
-					  	</li>
-					  	<li class="link__apps">
-					  		<a id="apps" href="#">
-									<i id="th" class="icon icon-apps icon-link"></i> Apps
-					  		</a>
-					  	</li>
-					  	<li class="link__new-link">
-								<i id="icon-add" class="icon icon-add icon-link"></i>
-								<input type="text" placeholder="New Link" autocomplete="off" id="new-link"/>
-							</li>
-					</ul>
-				</div>
-			</form>
+		</form> -->
 
+		<!-- Links, Weather, Clock/greetings, Quote: toggle off when background info hovered. -->
+		<div class="toggle-off">
+
+			<!-- Links. -->
+			<div class="links" id="links">Links</div>
+			<div class="links__popup">
+				<ul class="links__list">
+						<li class="link__chrome">
+							<a id="chrometab" href="#">
+								<i id="chrome" class="icon icon-chrome icon-link"></i> Chrome tab
+							</a>
+						</li>
+						<li class="link__apps">
+							<a id="apps" href="#">
+								<i id="th" class="icon icon-apps icon-link"></i> Apps
+							</a>
+						</li>
+						<li class="link__new-link">
+							<i id="icon-add" class="icon icon-add icon-link"></i>
+							<input type="text" placeholder="New Link" autocomplete="off" id="new-link"/>
+						</li>
+				</ul>
+			</div>
+
+			<!-- Weather. -->
 			<div class="meteo-wrapper">
 				<div id="meteo-block">
 					<div class="meteo meteo-btn">
@@ -54,7 +58,7 @@
 						<div class="meteo__item-bottom location__city meteo-btn__item"></div>
 					</div>
 
-					<div id="meteo-popup-window">
+					<div class="meteo__popup">
 						<div id="meteo-city" class="location__city"></div>
 						<div id="meteo-state"><span class="description__text">...</span></div>
 						<div>
@@ -65,9 +69,12 @@
 				</div>
 			</div>
 
+			<!-- Clock/greetings. -->
 			<div id="middle-block">
 				<div id="time">
-					<span id="hours">..</span><span class="two-points">:</span><span id="minutes">..</span>
+					<span id="hours">..</span>
+					<span class="two-points">:</span>
+					<span id="minutes">..</span>
 				</div>
 
 				<div class="greeting">
@@ -77,12 +84,13 @@
 				</div>
 			</div>
 
+			<!-- Quote. -->
 			<div id="quote-block">
 				<div class="quote">...</div>
 				<div class="quote-author">
 					<span class="author"></span>
 					<span>
-						<i class="icon icon-heart-o icon-link"></i>
+						<i id="like-quote" class="icon icon-heart-o icon-link"></i>
 						<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fhelene-andre.github.io/Momentum%2F&text=Awesome+web+app!&hashtags=yeahbaby, coolwebsite" target="_blank">
 							<i id="twitter" class="icon icon-twitter icon-link"></i>
 						</a>
@@ -91,57 +99,58 @@
 			</div>
 		</div>
 
-		<div class="settings-geolocation-wrapper">
-			<div>
-				<form class="toggle-off" id="settings-block">
-					<label id="settings-label" for="settings-checkbox" class="icon icon-settings"></label>
-					<div class="settings" id="settings-popup-window">
-						<div class="wrapper">
-							<div class="settings__left-block">
-								<ul class="settings__left-block--list">
-									<li class="settings__item-1">General</li>
-									<li class="settings__item-1">Todo</li>
-									<li class="settings__item-1">Mantras</li>
-									<li class="settings__item-1">Photos</li>
-									<li class="settings__item-1">Quotes</li>
-									<li class="settings__item-1">Links</li>
-									<li class="settings__item-1">Balance</li>
-									<li class="settings__item-2">Help</li>
-									<li class="settings__item-2">What's New</li>
-									<li class="settings__item-2">About</li>
-									<li class="settings__item-2">Upgrade to Plus</li>
-								</ul>
-								<div class="settings__left-block--login">
-									<div class="login__title">Log In</div>
-									<div class="login__description">Sync your account & more!</div>
-								</div>
-							</div>
-							<div>
-								<div>General</div>
-								<div>Todo</div>
-								<div>Mantras</div>
-								<div>Photos</div>
-								<div>Quotes</div>
-								<div>Links</div>
-								<div>Balance</div>
-								<div>Help</div>
-								<div>What's New</div>
-								<div>About</div>
-								<div>Upgrade to Plus</div>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div id="geolocation-block">
-				<div class="geolocation">
-					<span class="location__city" id="background-location">Somewhere in the world</span>
-				</div>
+		<!-- Settings. -->
+		<div class="settings">
+			<!-- Settings wheel. -->
+			<div class="settings__wheel icon icon-settings"></div>
 
-				<div class="geolocation-author">
-					<a id="background-author" href="" target="_blank"></a>
-					<span id="author-heart-icon">
-						<i class="icon icon-heart-o icon-link-photo"></i>
+			<!-- Settings popup. -->
+			<div class="settings__popup">
+				<div class="settings__popup--left">
+					<ul>
+						<li class="list-item__medium">General</li>
+						<li class="list-item__medium">Todo</li>
+						<li class="list-item__medium">Mantras</li>
+						<li class="list-item__medium">Photos</li>
+						<li class="list-item__medium">Quotes</li>
+						<li class="list-item__medium">Links</li>
+						<li class="list-item__medium">Balance</li>
+						<li class="list-item__small">Help</li>
+						<li class="list-item__small">What's New</li>
+						<li class="list-item__small">About</li>
+						<li class="list-item__small">Upgrade to Plus</li>
+					</ul>
+					<div class="login">
+						<div class="login__title">Log In</div>
+						<div class="login__description">Sync your account & more!</div>
+					</div>
+				</div>
+				<div class="settings__popup--right">
+					<div>General</div>
+					<div>Todo</div>
+					<div>Mantras</div>
+					<div>Photos</div>
+					<div>Quotes</div>
+					<div>Links</div>
+					<div>Balance</div>
+					<div>Help</div>
+					<div>What's New</div>
+					<div>About</div>
+					<div>Upgrade to Plus</div>
+				</div>
+			</div>
+
+			<!-- Background picture's info. -->
+			<div id="background" class="background">
+
+				<!-- Background picture place. -->
+				<div class="background__location">Somewhere in the world</div>
+
+				<!-- Background picture author. -->
+				<div class="background__author">
+					<a class="background__author--name" href="" target="_blank"></a>
+					<span class="background__author--like">
+						<i id="like-background" class="icon icon-heart-o"></i>
 					</span>
 				</div>
 			</div>

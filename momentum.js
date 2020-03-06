@@ -19,23 +19,22 @@ function greetingMessage (currentHour) {
 	$('.greeting__message').html(message + ',&nbsp;')
 }
 
+//===================================================================================//
+
+//=============================== username ==========================================//
 function checkUsername () {
 	let $usernameInput = $('.greeting__username')
 	if (localStorage.username) $usernameInput.html(localStorage.username)
 	$usernameInput[localStorage.username ? 'removeClass' : 'addClass']('empty')
 
 	$usernameInput
-		.on('keyup', function (e) {
-			localStorage.username = this.innerHTML
-		})
-		.on('keypress', function (e) {
-			if (e.which === 13) $(this).blur()
-		})
-		.on('focus', function (e) {
+		.on('keyup', function () {localStorage.username = this.innerHTML})
+		.on('keypress', function (e) {if (e.which === 13) $(this).blur()})
+		.on('focus', function () {
 			$usernameInput.addClass('focus highlight')
 			setTimeout(function () {$usernameInput.removeClass('highlight')}, 300)
 		})
-		.on('blur', function (e) {
+		.on('blur', function () {
 			localStorage.username = this.innerHTML
 			$usernameInput.removeClass('focus')
 			$usernameInput[localStorage.username ? 'removeClass' : 'addClass']('empty')
@@ -46,67 +45,59 @@ function checkUsername () {
 }
 //===================================================================================//
 
-//================== close popup window when clicked outside ========================//
-let isLinksPopupOpen = false
+//==================================== Click events =================================//
+let isMeteoPopupOpen = false
 $(document).click(function (e) {
-	let container = $('#links-popup-window')
+	let weatherPopup = $('.meteo__popup')
 
-	if ($(e.target).is('#links') && !isLinksPopupOpen) {
-		container.show()
-		isLinksPopupOpen = true
+	if (($(e.target).is('.meteo-btn') || $(e.target).is('.meteo-btn__item')) && !isMeteoPopupOpen) {
+		weatherPopup.addClass('show')
+		isMeteoPopupOpen = true
 	}
-	else if (!$(e.target).is(container) && !container.has(e.target).length) {
-		container.hide()
-		isLinksPopupOpen = false
+	else if (!$(e.target).is(weatherPopup) && !weatherPopup.has(e.target).length) {
+		weatherPopup.removeClass('show')
+		isMeteoPopupOpen = false
 	}
 })
 
-let isMeteoPopupOpen = false
+let isLinksPopupOpen = false
 $(document).click(function (e) {
-	let container = $('#meteo-popup-window')
+	let linksPopup = $('.links__popup')
 
-	if (($(e.target).is('.meteo-btn') || $(e.target).is('.meteo-btn__item')) && !isMeteoPopupOpen) {
-		container.show()
-		isMeteoPopupOpen = true
+	if ($(e.target).is('#links') && !isLinksPopupOpen) {
+		linksPopup.addClass('show')
+		isLinksPopupOpen = true
 	}
-	else if (!$(e.target).is(container) && !container.has(e.target).length) {
-		container.hide()
-		isMeteoPopupOpen = false
+	else if (!$(e.target).is(linksPopup) && !linksPopup.has(e.target).length) {
+		linksPopup.removeClass('show')
+		isLinksPopupOpen = false
 	}
 })
 
 let isSettingsPopupOpen = false
 $(document).click(function (e) {
-	let container = $('#settings-popup-window')
+  // Fill/empty heart on click.
+  let likeBackground = $('#like-background')
+  let likeQuote = $('#like-quote')
+  if ($(e.target).is(likeBackground) ) {likeBackground.toggleClass('icon-heart')}
+  if ($(e.target).is(likeQuote) ) {likeQuote.toggleClass('icon-heart')}
 
-	if ($(e.target).is('#settings-label') && !isSettingsPopupOpen) {
-		container.show()
+  // Show/close popup on click.
+	let settingsPopup = $('.settings__popup')
+	if ($(e.target).is('.settings__wheel') && !isSettingsPopupOpen) {
+		settingsPopup.addClass('show')
 		isSettingsPopupOpen = true
-		$('#settings-label').addClass('rotate')
+		$('.settings__wheel').addClass('rotate')
 	}
-	else if (!$(e.target).is(container) && !container.has(e.target).length) {
-		container.hide()
+	else if (!$(e.target).is(settingsPopup) && !settingsPopup.has(e.target).length) {
+		settingsPopup.removeClass('show')
 		isSettingsPopupOpen = false
-		$('#settings-label').removeClass('rotate')
-	}
+		$('.settings__wheel').removeClass('rotate')
+  }
 })
 //===================================================================================//
 
-//====================== show whole background on mouseover =========================//
-window.addEventListener ('mouseover', function (event) {
-	if (event.target === document.getElementById('geolocation-block') || event.target === document.getElementsByClassName('geolocation-author')[0] || event.target === document.getElementsByClassName('geolocation')[0]) {
-		document.getElementsByClassName('toggle-off')[0].className = document.getElementsByClassName('toggle-off')[0].className.replace('toggle-off', 'toggle-on')
-	}
-})
-
-window.addEventListener ('mouseout', function (event) {
-	if (event.target === document.getElementById('geolocation-block') || event.target === document.getElementsByClassName('geolocation-author')[0] || event.target === document.getElementsByClassName('geolocation')[0]) {
-		document.getElementsByClassName('toggle-on')[0].className = document.getElementsByClassName('toggle-on')[0].className.replace('toggle-on', 'toggle-off')
-	}
-})
-//===================================================================================//
-
-//============================== Weather & location =================================//
+//========================= Geolocation & local weather =============================//
 // Get location using https://ipinfo.io .
 function getUserLocation () {
 	$.get('https://ipinfo.io', function(location) {
@@ -184,6 +175,7 @@ function getQuoteOfTheDay () {
 //===================================================================================//
 
 //==================== Picture background, author and location ======================//
+// Display background info.
 const backgrounds = [
 	{
 		author: 'Nick Cooper',
@@ -223,13 +215,26 @@ const backgrounds = [
 	}
 ]
 function setBackground () {
-	let randomNumber = Math.floor(Math.random() * backgrounds.length)
+  let randomNumber = Math.floor(Math.random() * backgrounds.length)
 
-	document.getElementById('background-author').innerHTML = `Photo by ${backgrounds[randomNumber].author}`
-	document.getElementById('background-author').href = backgrounds[randomNumber].href
-	document.getElementById('background-location').innerHTML = backgrounds[randomNumber].location
-	document.getElementById('background-src').src = backgrounds[randomNumber].src
+	document.getElementsByClassName('background__author--name')[0].innerHTML = `Photo by ${backgrounds[randomNumber].author}`
+	document.getElementsByClassName('background__author--name')[0].href = backgrounds[randomNumber].href
+	document.getElementsByClassName('background__location')[0].innerHTML = backgrounds[randomNumber].location
+	document.getElementsByClassName('background__src')[0].src = backgrounds[randomNumber].src
 }
+
+// Show whole background on background info mouseover.
+window.addEventListener ('mouseover', function (event) {
+	if (event.target === document.getElementById('background') || event.target === document.getElementsByClassName('background__author')[0] || event.target === document.getElementsByClassName('background')[0]) {
+		document.getElementsByClassName('toggle-off')[0].className = document.getElementsByClassName('toggle-off')[0].className.replace('toggle-off', 'toggle-on')
+	}
+})
+
+window.addEventListener ('mouseout', function (event) {
+	if (event.target === document.getElementById('background') || event.target === document.getElementsByClassName('background__author')[0] || event.target === document.getElementsByClassName('background')[0]) {
+		document.getElementsByClassName('toggle-on')[0].className = document.getElementsByClassName('toggle-on')[0].className.replace('toggle-on', 'toggle-off')
+	}
+})
 //===================================================================================//
 
 //===================== Call functions on document ready ============================//
