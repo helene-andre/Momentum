@@ -51,11 +51,11 @@ $(document).click(function (e) {
 	let weatherPopup = $('.meteo__popup')
 
 	if (($(e.target).is('.meteo-btn') || $(e.target).is('.meteo-btn__item')) && !isMeteoPopupOpen) {
-		weatherPopup.addClass('show')
+		weatherPopup.addClass('show top')
 		isMeteoPopupOpen = true
 	}
 	else if (!$(e.target).is(weatherPopup) && !weatherPopup.has(e.target).length) {
-		weatherPopup.removeClass('show')
+		weatherPopup.removeClass('show top')
 		isMeteoPopupOpen = false
 	}
 })
@@ -65,11 +65,11 @@ $(document).click(function (e) {
 	let linksPopup = $('.links__popup')
 
 	if ($(e.target).is('#links') && !isLinksPopupOpen) {
-		linksPopup.addClass('show')
+		linksPopup.addClass('show top')
 		isLinksPopupOpen = true
 	}
 	else if (!$(e.target).is(linksPopup) && !linksPopup.has(e.target).length) {
-		linksPopup.removeClass('show')
+		linksPopup.removeClass('show top')
 		isLinksPopupOpen = false
 	}
 })
@@ -85,12 +85,12 @@ $(document).click(function (e) {
   // Show/close popup on click.
 	let settingsPopup = $('.settings__popup')
 	if ($(e.target).is('.settings__wheel') && !isSettingsPopupOpen) {
-		settingsPopup.addClass('show')
+		settingsPopup.addClass('show bottom')
 		isSettingsPopupOpen = true
 		$('.settings__wheel').addClass('rotate')
 	}
 	else if (!$(e.target).is(settingsPopup) && !settingsPopup.has(e.target).length) {
-		settingsPopup.removeClass('show')
+		settingsPopup.removeClass('show bottom')
 		isSettingsPopupOpen = false
 		$('.settings__wheel').removeClass('rotate')
   }

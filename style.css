@@ -127,7 +127,7 @@ canvas {
 	height: 132px;
 	position: fixed;
 	left: 1.15%;
-	top: 7%;
+	top: 6%;
 	background-color: black;
 	opacity: 0;
 	border-radius: 5px;
@@ -248,7 +248,7 @@ canvas {
 	background-color: black;
 	position: fixed;
 	right: 1.45%;
-	top: 9%;
+	top: 12%;
 	border-radius: 5px;
 	padding: 19px;
 	font-size: 1.3em;
@@ -268,7 +268,7 @@ canvas {
   border-bottom-color: black;
   opacity: 0.9;
   position: absolute;
-  right: 5.5%;
+  right: 12.5%;
   bottom: 100%;
 }
 
@@ -344,8 +344,8 @@ canvas {
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: 5px;
 	position: fixed;
-	left: 0.8%;
-	bottom: 9%;
+	left: -1%;
+	bottom: 5%;
 	margin: 18px;
 	opacity: 0;
 	display: flex;
@@ -361,7 +361,7 @@ canvas {
   border-top-color: rgba(0, 0, 0, 0.8);
   opacity: 0.9;
   position: absolute;
-	left: 2.75%;
+	left: 2.1%;
   top: 100%;
 }
 
@@ -605,6 +605,8 @@ span,i {
 
 /*=========================== Animations ==================================*/
 .show {opacity: 1;}
+.top {transform: translateY(10px);}
+.bottom {transform: translateY(-10px);}
 .rotate {transform: rotate(60deg) scale(1.2);}
 .toggle-off {transition: 0.3s ease-in-out;}
 .toggle-on {
